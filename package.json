@@ -1,0 +1,82 @@
+{
+  "name": "HackerNewsDemo",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "compile": "rm -rf dist && tsc",
+    "android:clean": "cd android && ./gradlew clean",
+    "andriod:update": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "android:debug": "npm run compile && npm run android:clean && npm run android:assembleDebug",
+    "android:dev": "concurrently \"tsc -w\" \"npm run android:clean && react-native run-android\"",
+    "ios:dev": "concurrently \"tsc -w\" \"react-native run-ios\"",
+    "ios:8Plus": "concurrently \"tsc -w\" \"react-native run-ios --udid 86F8C5DE-A2EC-4036-BB25-565C5F543E79\"",
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'"
+  },
+  "dependencies": {
+    "@react-native-community/netinfo": "^9.3.6",
+    "@react-native-masked-view/masked-view": "^0.2.8",
+    "@react-navigation/native": "^6.0.13",
+    "@react-navigation/native-stack": "^6.9.1",
+    "axios": "^0.27.2",
+    "axios-hooks": "^3.0.3",
+    "concurrently": "^7.5.0",
+    "dayjs": "^1.11.6",
+    "lru-cache": "^7.14.0",
+    "ramda": "^0.28.0",
+    "react": "18.1.0",
+    "react-native": "0.70.0",
+    "react-native-linear-gradient": "^2.6.2",
+    "react-native-pager-view": "^6.0.2",
+    "react-native-safe-area-context": "^4.4.1",
+    "react-native-screens": "^3.18.2",
+    "react-native-skeleton-placeholder": "^5.2.3",
+    "react-native-svg": "^13.4.0",
+    "react-native-webview": "^11.23.1",
+    "react-redux": "^8.0.4",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1",
+    "rn-progress-loader": "^1.0.8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/runtime": "^7.12.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@tsconfig/react-native": "^2.0.2",
+    "@types/jest": "^26.0.23",
+    "@types/ramda": "^0.28.18",
+    "@types/react": "^18.0.21",
+    "@types/react-native": "^0.70.6",
+    "@types/react-test-renderer": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.37.0",
+    "@typescript-eslint/parser": "^5.37.0",
+    "babel-jest": "^26.6.3",
+    "eslint": "^7.32.0",
+    "jest": "^26.6.3",
+    "metro-react-native-babel-preset": "0.72.3",
+    "react-test-renderer": "^18.1.0",
+    "typescript": "^4.8.3"
+  },
+  "jest": {
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!@react-native|react-native)"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/config/fileMock.js"
+    }
+  }
+}
